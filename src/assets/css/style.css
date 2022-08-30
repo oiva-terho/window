@@ -379,11 +379,6 @@ textarea:focus {
 .glazing_block a {
   font-size: 1.8rem;
   font-weight: 600;
-  text-decoration: underline;
-  /*&:focus {
-				text-decoration: none;
-				color: #454545;
-			}*/
 }
 
 .glazing_block a:hover {
@@ -486,9 +481,19 @@ textarea:focus {
   display: none;
 }
 
-.glazing a.active {
+.glazing .active a {
   text-decoration: none;
   color: #454545;
+}
+
+.faded {
+  animation-name: faded;
+  animation-duration: 0.4s;
+}
+
+@keyframes faded {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /*Decoration*/
