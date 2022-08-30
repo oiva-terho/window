@@ -13,22 +13,29 @@ export const modals = () => {
         const triggers = document.querySelectorAll(triggersSelector),
               modal = document.querySelector(modalSelector),
               close = document.querySelector(closeSelector);
+              
         triggers.forEach(trigger => {
             trigger.addEventListener('click', e => {
-                if (e.target) { e.preventDefault(); }
+                if (e.target) { 
+                    e.preventDefault(); 
+                }
                 openModal(modal);
             });
     
         });
-        close.addEventListener('click', () => { closeModal(modal); });
+
+        close.addEventListener('click', () => closeModal(modal));
 
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) { closeModal(modal); }
+            if (e.target === modal) { 
+                closeModal(modal); 
+            }
         });
 
         window.addEventListener('keyup', (e) => {
-            if (e.key === 'Escape') { closeModal(modal); }
-
+            if (e.key === 'Escape') { 
+                closeModal(modal); 
+            }
         });
     };
 
