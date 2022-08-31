@@ -17,7 +17,7 @@ export const forms = () => {
 
     const postData = async (url, data) => {
         document.querySelector('.status').textContent = message.loading;
-        let result = await fetch(url, {
+        const result = await fetch(url, {
             method: "POST",
             body: data
         });
@@ -25,16 +25,12 @@ export const forms = () => {
         return await result.text();
     }; 
 
-    const clearInputs = () => {
-        inputs.forEach(input => {
-            input.value = '';
-        });
-    };
+    const clearInputs = () => inputs.forEach(input => input.value = '');
 
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            let statusMessage = document.createElement('div');
+            const statusMessage = document.createElement('div');
             statusMessage.classList.add('status');
             form.appendChild(statusMessage);
 
