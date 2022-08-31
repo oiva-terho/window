@@ -1,5 +1,5 @@
 import "./slider";
-import { modals, tabs, forms, changeCalcData } from "./modules";
+import { modals, tabs, forms, changeCalcData, countdown, zoomImage } from "./modules";
 
 'use strict';
 
@@ -27,3 +27,5 @@ tabs({
     activeClass: 'do_image_more',
     display: 'inline'
 });
+zoomImage();
+countdown('#timer', '2022-12-18');
