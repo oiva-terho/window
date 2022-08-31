@@ -1,7 +1,10 @@
 import "./slider";
-import { modals, tabs } from "./modules";
+import { modals, tabs, forms } from "./modules";
+
+'use strict';
 
 modals();
+forms();
 tabs({
     headerSelector: '.glazing_slider ', 
     tabSelector: '.glazing_block', 
