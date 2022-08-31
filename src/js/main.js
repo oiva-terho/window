@@ -1,10 +1,13 @@
 import "./slider";
-import { modals, tabs, forms } from "./modules";
+import { modals, tabs, forms, changeCalcData } from "./modules";
 
 'use strict';
 
+const calcData = { form: 0, type: 'wood' };
+
+changeCalcData(calcData);
 modals();
-forms();
+forms(calcData);
 tabs({
     headerSelector: '.glazing_slider ', 
     tabSelector: '.glazing_block', 
