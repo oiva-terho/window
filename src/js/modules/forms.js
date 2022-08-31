@@ -32,7 +32,7 @@ export const forms = () => {
             e.preventDefault();
             const statusMessage = document.createElement('div');
             statusMessage.classList.add('status');
-            form.appendChild(statusMessage);
+            form.append(statusMessage);
 
             const formData = new FormData(form);
 
