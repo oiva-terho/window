@@ -1,10 +1,9 @@
-import { checkNumInputs } from "./inputCheck";
-
+import { phoneMask } from "./phone-mask.min";
 export const forms = (state) => {
     const forms = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input');
 
-    checkNumInputs('input[name="user_phone"]');
+    phoneMask('input[name="user_phone"]');
 
     const message = {
         loading: 'Загрузка',

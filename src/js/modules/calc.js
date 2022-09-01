@@ -1,14 +1,21 @@
-import { checkNumInputs } from "./inputCheck";
-
 export const changeCalcData = (calcData) => {
     const windowShapes = document.querySelectorAll('.balcon_icons_img'),
           windowWidth = document.querySelectorAll('#width'),
           windowHeight = document.querySelectorAll('#height'),
           windowType = document.querySelectorAll('#view_type'),
           windowWarmth = document.querySelectorAll('.checkbox');
-    
-    checkNumInputs('#width');
-    checkNumInputs('#height');
+
+    const numbersOnly = (selector) => {
+        const numInputs = document.querySelectorAll(selector);
+        numInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                input.value = input.value.replace(/\D/, '');
+            });
+        });
+    };
+
+    numbersOnly('#width');
+    numbersOnly('#height');
 
     const fillState = ({event, input, property}) => {
         input.forEach((field, i) => {
@@ -19,14 +26,7 @@ export const changeCalcData = (calcData) => {
                         break;
                     case 'INPUT' :
                         if (field.getAttribute('type') === 'checkbox') {
-                            i === 0 ? calcData[property] = "cold" :  calcData[property] = "warm";
-                            //here we should uncheck second checkbox. how can I cut it?
-                            input.forEach((box, j) => {
-                                box.checked = false;
-                                if (i == j) {
-                                    box.checked = true;
-                                }
-                            });
+                            calcData[property] = i === 0 ? "cold" : "warm";
                         } else {
                             calcData[property] = field.value;
                         }

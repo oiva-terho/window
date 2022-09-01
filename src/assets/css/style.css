@@ -130,6 +130,10 @@ textarea:focus {
   cursor: pointer;
 }
 
+.button:focus-within {
+  box-shadow: 0 0 0 6px rgb(236, 234, 234); 
+}
+
 .section_header {
   margin-bottom: 8rem;
   text-align: center;
@@ -932,6 +936,19 @@ textarea:focus {
   margin-bottom: 1rem;
 }
 
+.popup_calc_content .balcon_icons_img {
+  padding: 0;
+  border: none;
+  background-color: #fff;
+  margin: 0 0.4em;
+}
+
+.popup_calc_content .balcon_icons_img:focus-within {
+  border-radius: 8px;
+  box-shadow: 0 0 0 6px rgb(236, 234, 234);
+  background-color: #fff;
+}
+
 .popup_calc_content .big_img img {
   display: none;
   margin-bottom: 3rem;
@@ -1027,7 +1044,8 @@ textarea:focus {
 }
 
 .popup_calc_profile_content .checkbox {
-  display: none;
+  opacity: 0;
+  position: absolute;
 }
 
 .popup_calc_profile_content .checkbox-custom {
@@ -1037,6 +1055,9 @@ textarea:focus {
   border: 2px solid #ccc;
   border-radius: 3px;
 }
+/* .popup_calc_profile_content .checkbox:focus-within {
+  text-decoration: underline;
+} */
 
 .popup_calc_profile_content .checkbox-custom,
 .popup_calc_profile_content .label {
