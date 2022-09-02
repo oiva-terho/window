@@ -1,24 +1,27 @@
+const modalWindows = document.querySelectorAll('[data-modal]');
+
+const calcScrollBarWidth = () => {
+    const testDiv = document.createElement('div');
+    testDiv.style.width = '100px';
+    testDiv.style.overflowY = 'scroll';
+    document.body.appendChild(testDiv);
+
+    const scrollWidth = testDiv.offsetWidth - testDiv.clientWidth;
+    testDiv.remove();
+    return scrollWidth;
+};
+
+const scrollWidth = calcScrollBarWidth();
+
+export const openModal = (openTrigger, display) => {
+    openTrigger.style.display = display;
+    document.body.classList.add('modal-open');
+    document.body.style.marginRight = `${scrollWidth}px`;
+};
+
+
+
 export const modals = () => {
-    const modalWindows = document.querySelectorAll('[data-modal]');
-
-    const calcScrollBarWidth = () => {
-        const testDiv = document.createElement('div');
-        testDiv.style.width = '100px';
-        testDiv.style.overflowY = 'scroll';
-        document.body.appendChild(testDiv);
-
-        const scrollWidth = testDiv.offsetWidth - testDiv.clientWidth;
-        testDiv.remove();
-        return scrollWidth;
-    };
-
-    const scrollWidth = calcScrollBarWidth();
-
-    const openModal = (openTrigger) => {
-        openTrigger.style.display ="block";
-        document.body.classList.add('modal-open');
-        document.body.style.marginRight = `${scrollWidth}px`;
-    };
 
     const closeModal = () => {
         modalWindows.forEach(window => window.style.display ="none");
@@ -43,7 +46,7 @@ export const modals = () => {
                 }
 
                 modalWindows.forEach(window => window.style.display ="none");
-                openModal(modal);
+                openModal(modal, 'block');
             });
     
         });
@@ -72,7 +75,7 @@ export const modals = () => {
                 }
             });
             if (!modalIsOpened) { 
-                openModal(document.querySelector(selector)); 
+                openModal(document.querySelector(selector), 'block'); 
             } 
         }, time);
     };
