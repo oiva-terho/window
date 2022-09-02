@@ -4,8 +4,8 @@ export const zoomImage = () => {
           bigImg = document.createElement('img');
 
     imgPopup.classList.add('popup', 'works-big');
-    workSection.appendChild(imgPopup);
-    imgPopup.appendChild(bigImg);
+    workSection.append(imgPopup);
+    imgPopup.append(bigImg);
 
     workSection.addEventListener('click', (e) => {
         e.preventDefault();
