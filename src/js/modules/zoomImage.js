@@ -1,3 +1,5 @@
+import { openModal } from "./modals";
+
 export const zoomImage = () => {
     const imgPopup = document.createElement('div'),
           workSection = document.querySelector('.works'),
@@ -10,13 +12,15 @@ export const zoomImage = () => {
     workSection.addEventListener('click', (e) => {
         e.preventDefault();
         if (e.target && e.target.classList.contains('preview')) {
-            imgPopup.style.display = 'flex';
+            openModal(imgPopup, 'flex');
             const path = e.target.parentNode.getAttribute('href');
             bigImg.setAttribute('src', path);
         }
 
         if (e.target && e.target.matches('div.popup')) {
             imgPopup.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            document.body.style.marginRight = '';
         }
     });
 };
