@@ -9,6 +9,12 @@ export const zoomImage = () => {
     workSection.append(imgPopup);
     imgPopup.append(bigImg);
 
+    const closeBigImg = () => {
+        imgPopup.style.display = 'none';
+        document.body.classList.remove('modal-open');
+        document.body.style.marginRight = '';
+    };
+
     workSection.addEventListener('click', (e) => {
         e.preventDefault();
         if (e.target && e.target.classList.contains('preview')) {
@@ -18,9 +24,13 @@ export const zoomImage = () => {
         }
 
         if (e.target && e.target.matches('div.popup')) {
-            imgPopup.style.display = 'none';
-            document.body.classList.remove('modal-open');
-            document.body.style.marginRight = '';
+            closeBigImg(); 
+        }
+    });
+
+    window.addEventListener('keyup', (e) => {
+        if (e.key === 'Escape') { 
+            closeBigImg(); 
         }
     });
 };
