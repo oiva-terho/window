@@ -2,12 +2,12 @@ export const modals = () => {
     const modalWindows = document.querySelectorAll('[data-modal]');
 
     const calcScrollBarWidth = () => {
-        let testDiv = document.createElement('div');
+        const testDiv = document.createElement('div');
         testDiv.style.width = '100px';
         testDiv.style.overflowY = 'scroll';
         document.body.appendChild(testDiv);
 
-        let scrollWidth = testDiv.offsetWidth - testDiv.clientWidth;
+        const scrollWidth = testDiv.offsetWidth - testDiv.clientWidth;
         testDiv.remove();
         return scrollWidth;
     };
@@ -65,7 +65,15 @@ export const modals = () => {
 
     const showModalByTime = (selector, time) => {
         setTimeout(() => {
-            openModal(document.querySelector(selector)); 
+            let modalIsOpened;
+            modalWindows.forEach(window => {
+                if (getComputedStyle(window).display !== 'none') {
+                    modalIsOpened = true;
+                }
+            });
+            if (!modalIsOpened) { 
+                openModal(document.querySelector(selector)); 
+            } 
         }, time);
     };
 

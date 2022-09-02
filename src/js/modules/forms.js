@@ -1,13 +1,9 @@
-export const forms = () => {
+import { phoneMask } from "./phone-mask.min";
+export const forms = (state) => {
     const forms = document.querySelectorAll('form'),
-          inputs = document.querySelectorAll('input'),
-          phoneInputs = document.querySelectorAll('input[name="user_phone"]');
+          inputs = document.querySelectorAll('input');
 
-    phoneInputs.forEach(input => {
-        input.addEventListener('input', () => {
-            input.value = input.value.replace(/\D/, '');
-        });
-    });
+    phoneMask('input[name="user_phone"]');
 
     const message = {
         loading: 'Загрузка',
@@ -35,7 +31,11 @@ export const forms = () => {
             form.append(statusMessage);
 
             const formData = new FormData(form);
-
+            if (form.getAttribute('data-calc')) {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                }
+            }
             postData('assets/server.php', formData)
                 .then(postResult => {
                     console.log(postResult);
